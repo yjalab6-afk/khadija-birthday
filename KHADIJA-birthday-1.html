@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8e4ef">
+<title>KHADIJA.exe — Birthday Mission</title>
+<style>
+:root{--ink:#57384f;--pink:#bd6394;--pale:#fff1f7;--line:#ead6e2}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(150deg,#fff8fc,#f3efff);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding:22px 14px}
+main{max-width:680px;margin:auto}.hero,.panel{border-radius:22px;padding:22px;margin:14px 0;box-shadow:0 8px 28px #70405c12}
+.hero{background:linear-gradient(140deg,#f8d8e8,#e9dcf8 65%,#dceafa);text-align:center}
+.panel{background:white;border:1px solid var(--line)}
+h1{font-size:clamp(30px,8vw,44px);margin:8px 0}h2{font-size:21px;margin:5px 0 10px}
+p{line-height:1.8}.small{font-size:13px;color:#876d80}.stamp{display:inline-block;background:#f8e4ef;color:#a74e7b;border-radius:30px;padding:5px 11px;font-size:12px;font-weight:700}
+button{font:inherit;cursor:pointer;border:0;border-radius:13px;padding:12px 15px}
+.primary{background:var(--pink);color:white;font-weight:750;width:100%;margin-top:10px}
+.choice,.door{background:#fff;border:1px solid var(--line);color:var(--ink);width:100%;text-align:right;margin:5px 0}
+.choice.selected{background:#f9e7f0;border-color:var(--pink)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.door{text-align:center;min-height:94px}.door strong{display:block}
+.hidden{display:none!important}.progress{height:7px;background:#eee4eb;border-radius:9px;overflow:hidden;margin:10px 0}.progress div{height:100%;width:0;background:var(--pink);transition:width .25s}
+.note{background:#fff1f7;border-radius:14px;padding:13px;line-height:1.9}
+.letter{background:linear-gradient(145deg,#fff1f7,#f2edff);padding:20px;border-radius:17px;line-height:2}
+footer{text-align:center;color:#987f91;font-size:12px;padding:15px}
+</style>
+</head>
+<body><main>
+<section class="hero">
+ <div style="font-size:42px">🎀 🔐 🎂</div><div class="small" style="letter-spacing:3px;font-weight:800">TOP SECRET • CLASSIFIED</div>
+ <h1>KHADIJA.exe</h1><h2>ملف القضية رقم 001</h2>
+ <p>تم اختياركِ لمهمة خطيرة جداً...<br>النجاة من سنة جديدة من العمر 😂</p>
+ <b>STATUS: BIRTHDAY GIRL DETECTED 💗</b>
+</section>
+<section class="panel" id="intro">
+ <span class="stamp">رسالة عاجلة إلى خديجة</span><h2 style="margin-top:12px">أهلاً بالمتهمة الرئيسية 👀</h2>
+ <p>وصلنا بلاغ إن في شخص اسمه خديجة عنده عيد ميلاد، وشخص مجهول قرر يعمل له احتفال غير قانوني من شدة الحب.</p>
+ <div class="note">⚠️ التعليمات: ممنوع تخطي المهمات، وممنوع أخذ الموضوع بجدية. كل الإجابات مقبولة إلا إجابة «أنا كبرت».</div>
+ <button class="primary" id="start">ابدئي التحقيق ←</button>
+</section>
+<section id="game" class="hidden">
+ <div class="panel"><b>تقدم العملية</b><span class="small" id="counter" style="float:left">0 / 5 مهمات</span><div class="progress"><div id="bar"></div></div></div>
+ <section class="panel">
+  <span class="stamp">MISSION 01</span><h2>اختبار الشخصية المشبوهة 🕵️‍♀️</h2><p class="small">اختاري الإجابة الأقرب لخديجة. لا يوجد جواب خاطئ، في جميع الأحوال سيتم الحكم عليها 😂</p>
+  <b>لو خديجة صارت مشهورة، شو سبب شهرتها؟</b>
+  <div id="quiz">
+   <button class="choice">أ. الدراما والمواقف العجيبة</button><button class="choice">ب. جمال شخصيتها وذكاؤها</button>
+   <button class="choice">ج. اختفاء مفاجئ ثم عودة وكأن شيئاً لم يكن</button><button class="choice">د. كل ما سبق وبزيادة</button>
+  </div><div id="quizout" class="note hidden"></div><button id="quiznext" class="primary hidden">استلام الختم التالي ✓</button>
+ </section>
+ <section class="panel">
+  <span class="stamp">MISSION 02</span><h2>اختاري باب مصيرك 🚪</h2><p class="small">كل باب فيه مفاجأة. افتحيها كلها!</p>
+  <div class="grid" id="doors"><button class="door">🚪<strong>الباب 1</strong></button><button class="door">🚪<strong>الباب 2</strong></button><button class="door">🚪<strong>الباب 3</strong></button></div>
+  <div id="doorout" class="note" aria-live="polite">3 أبواب، و3 مفاجآت بانتظارك.</div>
+ </section>
+ <section class="panel">
+  <span class="stamp">MISSION 03</span><h2>محكمة خديجة 😂</h2><p class="small">التهمة: كونها شخصية لا يمكن استبدالها، وإحداث ضحك غير مبرر في حياة الآخرين.</p><b>ما هو الحكم المناسب؟</b>
+  <div id="verdict"><button class="choice">السجن المؤبد في قلبي 💗</button><button class="choice">الحكم عليها بسنة إضافية من الدلع</button><button class="choice">براءة مع تعويض عيد ميلاد ضخم 🎂</button></div>
+  <div id="verdictout" class="note hidden"></div>
+ </section>
+ <section class="panel">
+  <span class="stamp">MISSION 04</span><h2>متحف الذكريات 📸</h2><p class="small">اختاري بطاقة واحكي لخديجة عن ذكرى بينكم.</p>
+  <div class="grid2" id="memories"><button class="door">💬<strong>أول انطباع</strong></button><button class="door">🤣<strong>أكثر موقف مضحك</strong></button><button class="door">🫶<strong>ذكرى مميزة</strong></button><button class="door">🔮<strong>مستقبلنا</strong></button></div>
+  <div id="memoryout" class="note hidden"></div>
+ </section>
+ <section class="panel">
+  <span class="stamp">MISSION 05</span><h2>كشف السر الأخير 💌</h2><p class="small">من الشخص المسؤول عن كل هذا الاحتفال؟</p>
+  <button class="choice" id="secret">الشخص اللي بحب خديجة وقرر يدلعها اليوم 🥹</button><div id="secretout" class="note hidden">إجابة صحيحة! تم الكشف عن المديرة السرية للعملية: أنتِ! 😂💗</div>
+  <button class="primary" id="finish">افتحي الملف النهائي 🎁</button><p class="small" id="warning"></p>
+ </section>
+</section>
+<section id="ending" class="hidden">
+ <div class="hero"><div style="font-size:48px">🎂💗🎉</div><h1>CASE CLOSED!</h1><p>تم إنهاء التحقيق بنجاح يا خديجة.</p><b>الحكم النهائي: تستحقين عاماً مليئاً بالفرح والضحك.</b></div>
+ <div class="letter"><div style="font-size:28px;text-align:center">💌</div><h2 style="text-align:center">إلى خديجة،</h2>
+ <p>كل عام وإنتِ بخير يا خديجة! 🎀</p><p>بعيداً عن كل المزح والتحقيقات والاتهامات، بدي أحكيلك إن وجودك بحياتي من الأشياء الحلوة اللي بتستاهل الاحتفال.</p>
+ <p>بتمنى تكون سنتك الجديدة مليانة ضحكات من القلب، وأيام حلوة، وأحلام تتحقق، ومواقف نضل نحكي عنها ونضحك كل ما نتذكرها.</p>
+ <p>وبتمنى نظل نعمل ذكريات جديدة، ونكبر ونضل نلاقي أسباب نحتفل فيها سوا.</p><p style="text-align:center;font-weight:bold">Happy Birthday, Khadija! 🎂</p><p style="text-align:center">من الشخص اللي خطط لكل هالفوضى، وبحبك كثير 💗</p></div>
+ <div class="panel" style="text-align:center"><div style="font-size:34px">🏆</div><h2>الجائزة الكبرى</h2><p>تم منح خديجة لقب: أسطورة العام، ملكة الدراما، وأجمل سبب للاحتفال.</p><span class="stamp">VALID FOR THE ENTIRE YEAR</span></div>
+ <button class="primary" id="again">إعادة العملية من البداية ↻</button>
+</section>
+<footer>KHADIJA.exe • Designed with love & suspicious amounts of drama ♡</footer>
+</main>
+<script>
+(()=> {
+const $=id=>document.getElementById(id);let doors=new Set(),memories=new Set(),q=false,v=false,s=false;
+function update(){let n=+q+ +(doors.size===3)+ +v+ +(memories.size===4)+ +s;$('counter').textContent=n+' / 5 مهمات';$('bar').style.width=n*20+'%'}
+$('start').onclick=()=>{$('intro').classList.add('hidden');$('game').classList.remove('hidden')};
+const qtxt=['تشخيص أولي: خديجة عندها موهبة تحويل أي موقف عادي إلى مسلسل من 30 حلقة 😂','النتيجة: شخصية نادرة تستحق جائزة عالمية وراحة من المسؤوليات.','تم رصد موهبة الاختفاء والعودة. يرجى عدم محاولة فهم الظاهرة.','تحليل نهائي: خديجة نسخة محدودة الإصدار، لا يوجد منها بديل.'];
+document.querySelectorAll('#quiz button').forEach((b,i)=>b.onclick=()=>{document.querySelectorAll('#quiz button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');$('quizout').textContent=qtxt[i];$('quizout').classList.remove('hidden');$('quiznext').classList.remove('hidden')});
+$('quiznext').onclick=()=>{q=true;$('quiznext').textContent='تم استلام الختم ✓';$('quiznext').disabled=true;update()};
+const dt=['مبروك! ربحتي لقب المديرة التنفيذية للدلع لمدة سنة كاملة 👑','تحذير: يوجد شخص يحبك كثيراً ومخطط لهذه الفوضى من زمان 🥹','جائزة الباب: تصريح رسمي بطلب الكيك مرتين اليوم 🍰'];
+document.querySelectorAll('#doors button').forEach((b,i)=>b.onclick=()=>{if(doors.has(i))return;doors.add(i);b.innerHTML='🎁<strong>تم الفتح ✓</strong>';$('doorout').textContent=dt[i]+(doors.size===3?' — اكتملت الأبواب الثلاثة!':'');update()});
+const vt=['الحكم: مؤبد من المحبة، ولا مجال للاستئناف 😂💗','الحكم: سنة إضافية من الدلع مع وجوب توفير الكيك.','الحكم: براءة تامة، مع احتفال إجباري!'];
+document.querySelectorAll('#verdict button').forEach((b,i)=>b.onclick=()=>{document.querySelectorAll('#verdict button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');$('verdictout').textContent=vt[i];$('verdictout').classList.remove('hidden');v=true;update()});
+const mt=['احكي لصاحبتك: شو كان أول انطباع أخدتيه عنها؟ وهل تغير؟','استرجعوا موقفاً ضحكتوا عليه لدرجة ما قدرتوا تكملوا الحكي.','اختاري ذكرى بينكم بتتمني تعيشيها مرة ثانية.','تخيلي نفسكم بعد خمس سنوات: شو المغامرة اللي لازم تكونوا عملتوها؟'];
+document.querySelectorAll('#memories button').forEach((b,i)=>b.onclick=()=>{if(memories.has(i))return;memories.add(i);b.innerHTML='💗<strong>تم الاختيار ✓</strong>';$('memoryout').textContent=mt[i]+(memories.size===4?' — متحف الذكريات اكتمل!':'');$('memoryout').classList.remove('hidden');update()});
+$('secret').onclick=()=>{$('secretout').classList.remove('hidden');s=true;update()};
+$('finish').onclick=()=>{if(!(q&&doors.size===3&&v&&memories.size===4&&s)){$('warning').textContent='لسه في مهمات! أكمليها كلها أولاً 🔐';return}$('game').classList.add('hidden');$('ending').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'})};
+$('again').onclick=()=>location.reload();
+})();
+</script>
+</body></html>
